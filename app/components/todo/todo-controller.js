@@ -12,13 +12,12 @@ function getTodos() {
 
 function draw(todos) {
 	//WHAT IS MY PURPOSE?
-	//BUILD YOUR TODO TEMPLATE HERE
 	console.log(todos)
-	var template = ''
+	var template = `To Do List:${todos.length}`
 	//DONT FORGET TO LOOP
 	todos.forEach(todo => {
 		console.log(todo)
-		template += `<li>${todo.description}</li>`
+		template += `<li>${todo.description}</li><button onclick="app.controllers.todoController.toggleTodoStatus('${todo._id}')">done</button><button onclick="app.controllers.todoController.removeTodo('${todo._id}')">remove</button>`
 	})
 	document.getElementById('todo').innerHTML = template;
 }
@@ -27,7 +26,8 @@ function draw(todos) {
 export default class TodoController {
 	constructor() {
 		console.log('dude')
-		// IF YOU WANT YOUR TODO LIST TO DRAW WHEN THE PAGE FIRST LOADS WHAT SHOULD YOU CALL HERE???
+		debugger
+		todoService.getTodos(draw)
 	}
 	// You will need four methods
 	// getTodos should request your api/todos and give an array of todos to your callback fn
@@ -59,12 +59,7 @@ export default class TodoController {
 		// YEP THATS IT FOR ME
 	}
 
-	removeTodo(todoId) {
-		// ask the service to run the remove todo with this id
-
-		// ^^^^ THIS LINE OF CODE PROBABLY LOOKS VERY SIMILAR TO THE toggleTodoStatus
+	removeTodo(id) {
+		todoService.removeTodo(id, getTodos)
 	}
-
-
-
 }

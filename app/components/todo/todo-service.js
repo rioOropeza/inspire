@@ -33,23 +33,29 @@ export default class TodoService {
 			.catch(logError)
 	}
 
-	toggleTodoStatus(todoId) {
+	toggleTodoStatus(todoId, getTodos) {
 		// MAKE SURE WE THINK THIS ONE THROUGH
-		//STEP 1: Find the todo by its index **HINT** todoList
+
+		// todoList.findIndex(id =>)
 
 		var todo = {} ///MODIFY THIS LINE
 
 		//STEP 2: Change the completed flag to the opposite of what is is **HINT** todo.completed = !todo.completed
 		todoApi.put(todoId, todo)
 			.then(function (res) {
-				//DO YOU WANT TO DO ANYTHING WITH THIS?
+
 			})
 			.catch(logError)
 	}
 
-	removeTodo() {
-		// Umm this one is on you to write.... The method is a DELETE
-
+	removeTodo(id, callback) {
+		todoApi.delete(id)
+			.then(function (res) {
+				callback()
+			})
+			.catch(logError)
 	}
-
+	get todoList() {
+		return todoList
+	}
 }
