@@ -13,3 +13,7 @@
 .white{
     background-color: rgba(255, 255, 255, 0.473)
 }
+
+.crossed{
+    text-decoration: line-through;
+}

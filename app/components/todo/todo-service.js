@@ -34,16 +34,17 @@ export default class TodoService {
 	}
 
 	toggleTodoStatus(todoId, getTodos) {
+		console.log(todoId)
 		// MAKE SURE WE THINK THIS ONE THROUGH
 
 		// todoList.findIndex(id =>)
 
-		var todo = {} ///MODIFY THIS LINE
-
+		var todo = todoList.find(t => t._id === todoId)
+		todo.completed = !todo.completed
 		//STEP 2: Change the completed flag to the opposite of what is is **HINT** todo.completed = !todo.completed
 		todoApi.put(todoId, todo)
 			.then(function (res) {
-
+				getTodos()
 			})
 			.catch(logError)
 	}
@@ -59,3 +60,27 @@ export default class TodoService {
 		return todoList
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//@ts-ignore
+// t => t._id === todoId
+
+// function myFind(todoId) {
+// 	for (let i = 0; i < todoList.length; i++) {
+// 		let t = todoList[i]
+// 		if (t._id == todoId) return t
+// 	}
+// }

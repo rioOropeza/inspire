@@ -17,7 +17,11 @@ function draw(todos) {
 	//DONT FORGET TO LOOP
 	todos.forEach(todo => {
 		console.log(todo)
-		template += `<li>${todo.description}</li><button onclick="app.controllers.todoController.toggleTodoStatus('${todo._id}')">done</button><button onclick="app.controllers.todoController.removeTodo('${todo._id}')">remove</button>`
+		if (todo.completed) {
+			template += `<li class="crossed">${todo.description}</li><button onclick="app.controllers.todoController.toggleTodoStatus('${todo._id}')">done</button><button onclick="app.controllers.todoController.removeTodo('${todo._id}')">remove</button>`
+		} else {
+			template += `<li>${todo.description}</li><button onclick="app.controllers.todoController.toggleTodoStatus('${todo._id}')">done</button><button onclick="app.controllers.todoController.removeTodo('${todo._id}')">remove</button>`
+		}
 	})
 	document.getElementById('todo').innerHTML = template;
 }
