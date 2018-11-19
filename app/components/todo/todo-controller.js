@@ -13,7 +13,7 @@ function getTodos() {
 function draw(todos) {
 	//WHAT IS MY PURPOSE?
 	console.log(todos)
-	var template = `To Do List:${todos.length}`
+	var template = `To Do List: ${todos.length}`
 	//DONT FORGET TO LOOP
 	todos.forEach(todo => {
 		console.log(todo)
@@ -26,7 +26,6 @@ function draw(todos) {
 export default class TodoController {
 	constructor() {
 		console.log('dude')
-		debugger
 		todoService.getTodos(draw)
 	}
 	// You will need four methods

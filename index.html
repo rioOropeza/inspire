@@ -12,22 +12,22 @@
 
 <body id="body">
 	<div class="container-fluid background" id='dude'>
-		<div id="weather">
-			Your Weather Template
+		<div class="row">
+			<div class="col d-flex justify-content-end text" id="weather"></div>
+		</div>
+		<div class="row">
+			<div class="col text d-flex justify-content-center" id="quote"></div>
+		</div>
+		<div class="row fixed-bottom">
+			<div class="col d-flex justify-content-end">
+				<ul class="text" id="todo"></ul>
+				<form onsubmit="app.controllers.todoController.addTodoFromForm(event)">
+					<input type="text" name="description">
+					<button type="submit">Add</button>
+				</form>
+			</div>
 		</div>
 
-		<div id="quote" class="text">
-			The Quote
-		</div>
-
-		<div>
-			A Todo List
-			<ul class="text" id="todo"></ul>
-			<form onsubmit="app.controllers.todoController.addTodoFromForm(event)">
-				<input type="text" name="description">
-				<button type="submit">Add</button>
-			</form>
-		</div>
 	</div>
 
 
